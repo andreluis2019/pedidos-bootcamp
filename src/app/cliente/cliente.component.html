@@ -1,0 +1,57 @@
+<div class="card" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+      <div class="col-12">
+        <p-card header="Lista de Clientes">
+          <div class="text-right m-2">
+            <button pButton
+                    [routerLink]="['form']"
+                    type="button"
+                    label="Novo"
+                    class="ui-button-raised">
+            </button>
+          </div>
+          <p-table [columns]="cols"
+                   [lazy]="true"
+                   (onLazyLoad)="carregarLista()"
+                   [value]="clienteList"
+                   [loading]="loading">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{col.header}}
+                </th>
+                <th class="text-center">Ações</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  {{rowData[col.field]}}
+                </td>
+                <td class="text-center">
+                  <i [queryParams]="{id: rowData['id']}"
+                     [routerLink]="['form']"
+                     class="pi pi-pencil"
+                     title="Editar">
+                  </i>
+                  <i (click)="excluir(rowData.id)"
+                     class="pi pi-trash"
+                     title="Excluir">
+                  </i>
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>Sem Registros.</tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+              {{clienteList?.length}} Clientes.
+            </ng-template>
+          </p-table>
+        </p-card>
+      </div>
+    </div>
+</div>
+
+
+
