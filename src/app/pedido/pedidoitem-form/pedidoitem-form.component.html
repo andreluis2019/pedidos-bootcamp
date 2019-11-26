@@ -1,0 +1,33 @@
+<p-card header="Item do Pedido">
+  <div class="text-right m-2">
+    <button pButton
+            (click)="adicionarNoPedido()"
+            type="button"
+            label="Adicionar ao Pedido"
+            class="ui-button-raised">
+    </button>
+  </div>
+  <div class="container">
+    <h3></h3>
+    <span class="ui-float-label my-2">
+      <p-dropdown id="produto" [options]="produtoListDropdown"
+                  [(ngModel)]="objeto.produto" optionLabel="label">
+      </p-dropdown>
+      <label for="produto">Produto</label>
+    </span>
+    <span class="ui-float-label my-2">
+      <input id="quantidade" pInputText size="30" maxlength="20" type="text" [(ngModel)]="objeto.quantidade">
+      <label for="quantidade">Quantidade</label>
+    </span>
+    <span class="ui-float-label my-2">
+      <input id="valorUnitario" pInputText size="30" maxlength="20" type="text" [(ngModel)]="objeto.valorUnitario">
+      <label for="valorUnitario">Valor Unitário</label>
+    </span>
+    <span class="ui-float-label my-2">
+      <input id="desconto" pInputText size="30" maxlength="20" type="text" [(ngModel)]="objeto.desconto">
+      <label for="desconto">Desconto</label>
+    </span>
+  </div>
+</p-card>
+
+

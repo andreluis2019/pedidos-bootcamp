@@ -16,12 +16,14 @@ import {FormsModule} from '@angular/forms';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {SidebarModule} from 'primeng/primeng';
+import {CalendarModule, DropdownModule, SidebarModule} from 'primeng/primeng';
 import {SidebarService} from './service/sidebar.service';
 import {PedidoComponent} from './pedido/pedido.component';
 import {PedidoFormComponent} from './pedido/pedido-form/pedido-form.component';
-import { ProdutoComponent } from './produto/produto/produto.component';
-import { ProdutoFormComponent } from './produtoForm/produto-form/produto-form.component';
+import {ProdutoFormComponent} from './produto/produto-form/produto-form.component';
+import {ProdutoComponent} from './produto/produto.component';
+import {PedidoitemFormComponent} from './pedido/pedidoitem-form/pedidoitem-form.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ProdutoFormComponent } from './produtoForm/produto-form/produto-form.co
     PedidoComponent,
     PedidoFormComponent,
     ProdutoComponent,
-    ProdutoFormComponent
+    ProdutoFormComponent,
+    PedidoitemFormComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,9 @@ import { ProdutoFormComponent } from './produtoForm/produto-form/produto-form.co
     ToastModule,
     BrowserAnimationsModule,
     ConfirmDialogModule,
-    SidebarModule
+    SidebarModule,
+    DropdownModule,
+    CalendarModule
   ],
   providers: [
     MessageService,

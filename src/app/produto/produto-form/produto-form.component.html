@@ -1,1 +1,22 @@
-<p>produto-form works!</p>
+<p-card header="Produto">
+  <div class="text-right m-2">
+    <button pButton
+            (click)="salvar()"
+            type="button"
+            label="Salvar"
+            class="ui-button-raised">
+    </button>
+  </div>
+  <div class="container">
+    <h3></h3>
+    <span class="ui-float-label my-2">
+      <input id="descricao" pInputText size="30" type="text" [(ngModel)]="objeto.descricao">
+      <label for="descricao">Descrição</label>
+    </span>
+    <span class="ui-float-label my-2">
+      <input id="valorUnitario" pInputText size="30" type="number" [(ngModel)]="objeto.valorUnitario">
+      <label for="valorUnitario">Valor Unitário</label>
+    </span>
+  </div>
+</p-card>
+
