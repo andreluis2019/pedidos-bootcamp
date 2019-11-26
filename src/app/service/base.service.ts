@@ -22,8 +22,8 @@ export abstract class BaseService<T> {
     return this.http.post<T>(this.getUrl(), objeto);
   }
 
-  delete(id: number): Observable<T> {
-    return this.http.delete<T>(`${this.getUrl()}/${id}`);
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.getUrl()}/${id}`);
   }
 
   private getUrl(): string {

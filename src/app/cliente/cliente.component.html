@@ -13,7 +13,7 @@
           <p-table [columns]="cols"
                    [lazy]="true"
                    (onLazyLoad)="carregarLista()"
-                   [value]="clienteList"
+                   [value]="lista"
                    [loading]="loading">
             <ng-template pTemplate="header" let-columns>
               <tr>
@@ -34,10 +34,10 @@
                      class="pi pi-pencil"
                      title="Editar">
                   </i>
-                  <i (click)="excluir(rowData.id)"
-                     class="pi pi-trash"
-                     title="Excluir">
-                  </i>
+                    <i (click)="excluir(rowData['id'])"
+                       class="pi pi-trash"
+                       title="Excluir">
+                    </i>
                 </td>
               </tr>
             </ng-template>
@@ -45,9 +45,10 @@
               <tr>Sem Registros.</tr>
             </ng-template>
             <ng-template pTemplate="summary">
-              {{clienteList?.length}} Clientes.
+              {{lista?.length}} Clientes.
             </ng-template>
           </p-table>
+          <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
         </p-card>
       </div>
     </div>

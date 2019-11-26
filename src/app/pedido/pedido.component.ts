@@ -1,20 +1,20 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Cliente} from '../model/cliente';
-import {ClienteService} from '../service/cliente.service';
-import {Title} from '@angular/platform-browser';
-import {delay} from 'rxjs/operators';
-import {ConfirmationService, MessageService} from 'primeng/api';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import {ListComponent} from '../component/list.component';
+import {Pedido} from '../model/pedido';
+import {PedidoService} from '../service/pedido.service';
+import {Title} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {delay} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-cliente',
-  templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.scss']
+  selector: 'app-pedido',
+  templateUrl: './pedido.component.html',
+  styleUrls: ['./pedido.component.scss']
 })
-export class ClienteComponent extends ListComponent<Cliente> implements OnInit {
+export class PedidoComponent extends ListComponent<Pedido> implements OnInit {
 
-  constructor(private clienteService: ClienteService,
+  constructor(private pedidoService: PedidoService,
               private titleService: Title,
               private router: Router,
               private messageService: MessageService,
@@ -22,19 +22,20 @@ export class ClienteComponent extends ListComponent<Cliente> implements OnInit {
     super();
     this.cols = [
       { field: 'id', header: 'Id' },
-      { field: 'nome', header: 'Nome' },
-      { field: 'cpf', header: 'Cpf' },
-      { field: 'telefone', header: 'Telefone' }
+      { field: 'cliente', header: 'Cliente' },
+      { field: 'dataEmissao', header: 'Data Emissão' },
+      { field: 'total', header: 'Total' },
+      { field: 'pedidoItemList', header: 'Lista de Itens' }
     ];
   }
 
   ngOnInit() {
-    this.titleService.setTitle('Clientes');
+    this.titleService.setTitle('Pedidos');
   }
 
-  carregarLista(): void {
+  carregarLista() {
     this.loading = true;
-    this.clienteService.findAll().pipe(delay(500)).subscribe(clientes => {
+    this.pedidoService.findAll().pipe(delay(500)).subscribe(clientes => {
       this.lista = clientes;
       this.loading = false;
     });
@@ -42,7 +43,7 @@ export class ClienteComponent extends ListComponent<Cliente> implements OnInit {
 
   private deletar(id: number): void {
     this.loading = true;
-    this.clienteService.delete(id).subscribe(() => {
+    this.pedidoService.delete(id).subscribe(() => {
       this.carregarLista();
       this.messageService.add({
         severity: 'success',

@@ -13,14 +13,14 @@ export class ClienteFormComponent implements OnInit {
 
   objeto: Cliente;
 
-  constructor(private activateRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
               private clienteService: ClienteService,
               private router: Router,
               private messageService: MessageService) {
   }
 
   ngOnInit() {
-    this.activateRoute.queryParamMap.subscribe(params => {
+    this.activatedRoute.queryParamMap.subscribe(params => {
       if (params.has('id')) {
         this.clienteService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
@@ -28,7 +28,7 @@ export class ClienteFormComponent implements OnInit {
       } else {
         this.resetaForm();
       }
-    })
+    });
   }
 
   private resetaForm(): void {

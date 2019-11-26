@@ -1,0 +1,26 @@
+<p-card header="Pedido">
+  <div class="text-right m-2">
+    <button pButton
+            (click)="salvar()"
+            type="button"
+            label="Salvar"
+            class="ui-button-raised">
+    </button>
+  </div>
+  <div class="container">
+    <h3></h3>
+    <span class="ui-float-label my-2">
+      <input id="cliente" pInputText size="30" type="text" [(ngModel)]="objeto.cliente.nome">
+      <label for="cliente">Cliente</label>
+    </span>
+    <span class="ui-float-label my-2">
+      <input id="dataEmissao" pInputText size="30" type="text" [(ngModel)]="objeto.dataEmissao">
+      <label for="dataEmissao">Data Emissão</label>
+    </span>
+    <span class="ui-float-label my-2">
+      <input id="total" pInputText size="30" maxlength="20" type="text" [(ngModel)]="objeto.total">
+      <label for="total">Total</label>
+    </span>
+  </div>
+</p-card>
+
